@@ -1,3 +1,7 @@
 #!/usr/bin/env ruby
-#!/usr/bin/env ruby
-puts ARGV[0].scan(/School/).join
+x = ARGV
+def function
+ puts  x.scan(/School/).join
+end
+
+function
