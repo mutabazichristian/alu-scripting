@@ -5,7 +5,7 @@ I have no idea what they mean by documenting (didn't quiet get it last time but,
 import requests
 
 def number_of_subscribers(subreddit):
-    url = 'https://www.reddit.com/dev/api/{subreddit}'
+    url = 'https://www.reddit.com/dev/api/{subreddit}/about.json'
     headers = {'user-Agent': 'Mozilla/5.0'}
     response = requests.get(url,headers=headers, allow_redirects=false)
 
