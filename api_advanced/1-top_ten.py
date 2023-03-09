@@ -8,10 +8,11 @@ posts listed for a given subreddit
 import requests
 
 def top_ten(subreddit):
+    
     """some stuff"""
     url = 'http://reddit.com/r/{}/hot.json'.format(subreddit)
     """some other stuff"""
-    headers = {'User-Agent':' Mozila/5.0'}
+    headers = {'User-Agent': 'Mozila/5.0'}
     response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
