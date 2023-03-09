@@ -14,8 +14,6 @@ def recurse(subreddit, hot_list=[],after='None'):
     headers = {'User-Agent' : 'Mozilla/5.o'}
     params = {'limit' : 100}
     response = requests.get(url, headers=headers, params=params)
-    if response.status_code != 200:
-        return 'None'
     if response.status_code == 200:
         data = response.json()
 
@@ -26,4 +24,6 @@ def recurse(subreddit, hot_list=[],after='None'):
         after = data['data']['after']
     if data['after']:
         return recurse(subreddit, hot_list,data['after'])
+    else:
+        return 'None'
     
