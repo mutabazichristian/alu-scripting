@@ -8,7 +8,7 @@ import requests
 
 def top_ten(subreddit):
     """some stuff"""
-    url = f'http://reddit.com/r/{subreddit}/hot.json'
+    url = 'http://reddit.com/r/{}/hot.json'.format(subreddit)
     """some other stuff"""
     headers = {'User-Agent':'Mozila/5.0'}
     response = requests.get(url, headers=headers)
