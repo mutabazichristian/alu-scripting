@@ -7,8 +7,9 @@ posts listed for a given subreddit
 
 import requests
 
+
 def top_ten(subreddit):
-    
+
     """some stuff"""
     url = 'http://reddit.com/r/{}/hot.json'.format(subreddit)
     """some other stuff"""
