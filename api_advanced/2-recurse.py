@@ -9,7 +9,7 @@ No result returns "None"
 
 import requests
 
-def recurse(subreddit, hot_list=[]):
+def recurse(subreddit, hot_list=[],after='None'):
     url = 'https://reddit.com/r/hot.json'.format('subreddit')
     headers = {'User-Agent' : 'Mozilla/5.o'}
     params = {'limit' : 100}
@@ -17,6 +17,7 @@ def recurse(subreddit, hot_list=[]):
     if after:
         params['after'] = params
         response = requests.get(url, headers=headers, params=params)
+        return recurse(subreddit,hot_list,after)
     if response.status_code != 200 :
         return None
     data = response.json()
@@ -24,5 +25,3 @@ def recurse(subreddit, hot_list=[]):
     for child in children:
         title = child['data']['title']
         hot_list.append(title)
-    if not data['after']:
-        return recurse(subreddit,hot_list, data['after'])
