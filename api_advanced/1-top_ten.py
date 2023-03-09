@@ -5,7 +5,6 @@ function that returns the titles of the first 10 hot posts listed for a given su
 
 
 import requests
-subreddit = 'boy'
 
 def top_ten(subreddit):
     url = f'http://reddit.com/r/{subreddit}/hot.json'
@@ -14,8 +13,8 @@ def top_ten(subreddit):
 
     if response.status_code == 200:
         data = response.json()
-        for [data][children][:10]:
-            return ([post][title])
+        for post in data['data']['children'][:10]:
+            print(post['data']['title'])
 
     else:
-        return 0
+        print('None')
