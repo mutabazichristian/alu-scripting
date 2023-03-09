@@ -7,7 +7,9 @@ function that returns the titles of the first 10 hot posts listed for a given su
 import requests
 
 def top_ten(subreddit):
+    """some stuff"""
     url = f'http://reddit.com/r/{subreddit}/hot.json'
+    """some other stuff"""
     headers = {'User-Agent':'Mozila/5.0'}
     response = requests.get(url, headers=headers)
 
