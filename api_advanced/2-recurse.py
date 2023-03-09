@@ -13,15 +13,17 @@ def recurse(subreddit, hot_list=[],after='None'):
     url = 'https://reddit.com/r/hot.json'.format('subreddit')
     headers = {'User-Agent' : 'Mozilla/5.o'}
     params = {'limit' : 100}
+    response = requests.get(url, headers=headers, params=params)
+    if response.status_code != 200:
+        return 'None'
+    if response.status_code == 200:
+        data = response.json()
 
-    if after:
-        params['after'] = params
-        response = requests.get(url, headers=headers, params=params)
-        return recurse(subreddit,hot_list,after)
-    if response.status_code != 200 :
-        return None
-    data = response.json()
-    child = data['children']
-    for child in children:
-        title = child['data']['title']
-        hot_list.append(title)
+        for post in data['data']['children']:
+            title = post['data']['title']
+            hot_list.append(title)
+
+        after = data['data']['after']
+    if data['after']:
+        return recurse(subreddit, hot_list,data['after'])
+    
